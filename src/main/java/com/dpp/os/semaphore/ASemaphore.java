@@ -32,6 +32,8 @@ public abstract class ASemaphore {
      * 进程按照什么次序从队列中移出?公平的策略是先进先出法，被阻塞时间最久的进程最先从队列释放，该策略能保证进程不会被饿死.
      */
     public void r(Queue<Process> queue){
+        System.out.println(Thread.currentThread().getName()+"释放线程");
+        System.out.println(this);
         Process p = queue.poll();
         if(p != null){
             System.out.println(Thread.currentThread().getName()+" 释放一个等待的线程："+p.getThread().getName());

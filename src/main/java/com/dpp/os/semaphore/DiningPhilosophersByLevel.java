@@ -57,18 +57,29 @@ public class DiningPhilosophersByLevel {
          */
         @Override
         public void run() {
+            eat();
+            think();
+        }
+
+        private void eat(){
             try {
                 //级别低的
                 small.getSemaphore().acquire();
                 //级别高的
                 big.getSemaphore().acquire();
+                System.out.println(name+" 吃饭");
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(name+" 吃饭");
-            small.getSemaphore().release();
-            big.getSemaphore().release();
         }
+
+        private void think(){
+            System.out.println(this.name+" 思考");
+            big.getSemaphore().release();
+            small.getSemaphore().release();
+        }
+
 
     }
 
