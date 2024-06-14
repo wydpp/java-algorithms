@@ -44,9 +44,12 @@ public class LinkNode {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("LinkNode{");
-        sb.append("data=").append(data);
-        sb.append(", next=").append(next);
-        sb.append(", pre=").append(pre);
+        sb.append(data);
+        LinkNode node = this.next;
+        while (node != null) {
+            sb.append("->").append(node.data);
+            node = node.next;
+        }
         sb.append('}');
         return sb.toString();
     }
