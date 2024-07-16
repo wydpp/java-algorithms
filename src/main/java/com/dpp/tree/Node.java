@@ -31,16 +31,18 @@ public class Node {
         return leftChild;
     }
 
-    public void setLeftChild(Node leftChild) {
+    public Node setLeftChild(Node leftChild) {
         this.leftChild = leftChild;
+        return leftChild;
     }
 
     public Node getRightChild() {
         return rightChild;
     }
 
-    public void setRightChild(Node rightChild) {
+    public Node setRightChild(Node rightChild) {
         this.rightChild = rightChild;
+        return rightChild;
     }
 
     public Node getParent() {

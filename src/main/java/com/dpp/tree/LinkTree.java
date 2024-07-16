@@ -51,10 +51,11 @@ public class LinkTree {
     /**
      * 按层遍历：按层从第一层开始遍历
      * 递推公式： levelOrder(r) =
+     *
      * @param root
      * @return
      */
-    private static List<Integer> levelOrder(Node root){
+    private static List<Integer> levelOrder(Node root) {
         //TODO
         return null;
     }
@@ -103,6 +104,45 @@ public class LinkTree {
         result.add(node.data);
     }
 
+    /**
+     * 计算一颗树的高度
+     * 递推公式：height(node) = Math.max(height(node.left),height(node.right)) + 1
+     *
+     * @param node
+     * @return
+     */
+    public static int getHeight(Node node) {
+        Node n = node;
+        int height = doGetHeight(n);
+        return height;
+    }
+
+    private static int doGetHeight(Node n){
+        if (n == null){
+            return 0;
+        }
+        Node leftNode = n.leftChild;
+        Node rightNode = n.rightChild;
+        if (leftNode == null && rightNode == null){
+            return 1;
+        }else {
+            int leftHeight = 0;
+            int rightHeight = 0;
+            if (leftNode != null){
+                leftHeight = 1 + doGetHeight(leftNode);
+            }
+            if (rightNode != null){
+                rightHeight = 1 + doGetHeight(rightNode);
+            }
+            if (leftHeight < rightHeight){
+                return rightHeight;
+            }else {
+                return leftHeight;
+            }
+        }
+
+    }
+
 
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -139,6 +179,8 @@ public class LinkTree {
 
         values = posterOrder(root);
         System.out.println(values);
+
+        System.out.println(getHeight(root));
     }
 
 }
